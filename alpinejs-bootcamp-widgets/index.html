@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimonFN777</title>
+    <script src="https:unpkg.com/alpinejs" defer></script>
+    <script src="greet.js"></script>
+   </head>
+
+
+<style>
+    .greet {
+        background-color: rgb(93, 160, 199);
+        padding: 1em;
+        margin-bottom: 1em;
+        flex: 2;
+      }
+      .BudgetWidget {
+      margin: 10px;
+      padding: 1em;
+      flex: 1;}
+ 
+      .grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #2196F3;
+  padding: 10px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+    
+</style>
+
+<body>
+
+  <div class="grid-container">
+<div class= greet x-data="{
+    ShirtTotal:0,
+    Pantstotal:0.00,
+    Budget:0.00,
+    recharge:0,
+    remaining:0,
+    sms:0,
+    call:0,
+    morning:0,
+    afternoon:0,
+    nightshift: 0,
+    name: '',
+    message: '',
+    showGreeting: false,
+    greetMe() {
+    this.message = greet(this.name);
+    },
+  }"
+>
+
+
+<h1>Greetings Widget</h1>
+    <div x-text="message" class="message grid-item"></div>
+    <h4>You will be greeted Above this line after inserting your name</h4>
+    <input
+    x-model="name"
+    id="name"
+    type="text"
+    placeholder="Let me greet you" />
+    <button x-on:click="greetMe">Greet me!</button>
+
+
+
+<div class="greet grid-item">
+    <div x-data="{ count : 0 } ">
+        <h1>counter widget</h1>
+        <div class="counter" x-text="count"></div>
+        <div>
+            <button @click="count++">+</button>
+            <button @click="count--">-</button>
+        </div>
+    </div>
+
+</div>
+
+<div>
+
+<div class="BudgetWidget grid-item">
+  <h1>Budgeted Spending</h1>
+  
+  <h4>Select your shopping Credit Budget :R <span x-text="Budget"></span></h4>
+  
+  <span class="vouchers">
+  
+      <button x-on:click="Budget += 4000.00">R4 000.00</button>
+      <button x-on:click="Budget += 7500.00">R7 500.00</button>
+      <button x-on:click="Budget += 10000.00">R1 0000.00</button>
+  </span>
+  <br />
+  <h3>
+    Remaining Budget:R
+    <span x-text="Budget - (ShirtTotal + Pantstotal)"> </span>
+  </h3>
+  <h4>Total cost for Shirts : R <span x-text="ShirtTotal">SMS Bill</span></h4>
+  <h4>Total Cost for Pants : R <span x-text="Pantstotal"> Phone Call bill</span></h4>
+  <button x-on:click="ShirtTotal += 400.00">Buy a Shirt</button>
+  <button x-on:click="Pantstotal += 300.00 ">Buy a pair of Pants</button>
+  <br />
+ 
+    </div>
+   </div>
+  </div>    
+</div>    
+
+</body>
+
+</html>
